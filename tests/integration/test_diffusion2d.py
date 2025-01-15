@@ -1,6 +1,8 @@
 """
 Tests for functionality checks in class SolveDiffusion2D
 """
+import unittest
+from unittest import TestCase
 
 from diffusion2d import SolveDiffusion2D
 

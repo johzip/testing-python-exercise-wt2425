@@ -116,7 +116,8 @@ def main():
     DiffusionSolver.initialize_physical_parameters()
 
     u0 = DiffusionSolver.set_initial_condition()
-
+    
+    print(u0)
     # Number of timesteps
     nsteps = 101
 
