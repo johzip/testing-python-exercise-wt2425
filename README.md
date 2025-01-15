@@ -149,6 +149,60 @@ FAILED tests/unit/test_diffusion2d_functions.py::test_set_initial_condition - as
 ```
 ### unittest log
 
+#### test_initialize_domain
+```powershell
+Fdt = 0.0011428571428571432
+..
+======================================================================
+FAIL: test_initialize_domain (test_diffusion2d_functions.TestDiffusion2D.test_initialize_domain)
+Check function SolveDiffusion2D.initialize_domain
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\johzi\OneDrive\Desktop\Master\Simulation\Exercise\Ex6\testing-python-exercise-wt2425\tests\unit\test_diffusion2d_functions.py", line 43, in test_initialize_domain
+    self.assertEqual(actual_ny, ny)
+AssertionError: 4 != 200
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+FAILED (failures=1)
+```
+#### test_initialize_physical_parameters
+```powershell
+.dt = 0.0019047619047619052
+F.
+======================================================================
+FAIL: test_initialize_physical_parameters (test_diffusion2d_functions.TestDiffusion2D.test_initialize_physical_parameters)
+Checks function SolveDiffusion2D.initialize_domain
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\johzi\OneDrive\Desktop\Master\Simulation\Exercise\Ex6\testing-python-exercise-wt2425\tests\unit\test_diffusion2d_functions.py", line 67, in test_initialize_physical_parameters
+    self.assertAlmostEqual(actual_dt, dt , 4)
+AssertionError: 0.0019047619047619052 != 0.00113 within 4 places (0.0007747619047619053 difference)
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+FAILED (failures=1)
+```
+#### test_set_initial_condition
+```powershell
+.dt = 0.0011428571428571432
+.F
+======================================================================
+FAIL: test_set_initial_condition (test_diffusion2d_functions.TestDiffusion2D.test_set_initial_condition)
+Checks function SolveDiffusion2D.get_initial_function
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\johzi\OneDrive\Desktop\Master\Simulation\Exercise\Ex6\testing-python-exercise-wt2425\tests\unit\test_diffusion2d_functions.py", line 96, in test_set_initial_condition
+    self.assertTrue(np.allclose(actual_u, u))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+FAILED (failures=1)
+```
 ## Citing
 
 The code used in this exercise is based on [Chapter 7 of the book "Learning Scientific Programming with Python"](https://scipython.com/book/chapter-7-matplotlib/examples/the-two-dimensional-diffusion-equation/).

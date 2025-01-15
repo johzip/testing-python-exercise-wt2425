@@ -17,8 +17,6 @@ class TestDiffusion2D(TestCase):
         self.tolerance=0.0001
         return super().setUp()
     
-
-
     def test_initialize_domain(self):
         """
         Check function SolveDiffusion2D.initialize_domain
@@ -64,10 +62,8 @@ class TestDiffusion2D(TestCase):
         #actual_dt = pytest.approx(self.solver.dt, self.tolerance)
     
         # Test
-        self.assertAlmostEqual(actual_dt, dt , 2)
+        self.assertAlmostEqual(actual_dt, dt , 4)
         #assert actual_dt == dt
-
-
 
     def test_set_initial_condition(self):
         """
