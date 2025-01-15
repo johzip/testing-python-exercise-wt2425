@@ -3,6 +3,7 @@ Tests for functions in class SolveDiffusion2D
 """
 
 import pytest
+import numpy as np
 from diffusion2d import SolveDiffusion2D
 
 
@@ -63,23 +64,32 @@ def test_set_initial_condition():
     # Fixture
 
     # Expected result
-    u= [[300., 300., 300., 300.],[300., 300., 300., 300.],[300., 300., 300., 300.],[300., 300., 300., 300.]]
+    u= np.array([[300., 300., 300., 300.],
+                 [300., 300., 300., 300.],
+                 [300., 300., 300., 300.],
+                 [300., 300., 300., 300.],
+                 [300., 300., 300., 300.]])
     
 
     # Actual result
     solver = SolveDiffusion2D()
-    solver.nx=4
+    solver.nx=5
     solver.ny=4
-    solver.dx=0.1
+    solver.dx=0.5
     solver.dy=0.5
-    solver.T_cold=330.
-    solver.T_hot=930.
+    solver.T_cold=300.
+    solver.T_hot=900.
     actual_u = solver.set_initial_condition()
     
   
     # Test
-    for index1,i in enumerate(u):
-        for index2,j in enumerate(i):
-            assert actual_u[index1][index2] == u[index1][index2]
+    assert actual_u.shape == u.shape
+    assert np.allclose(actual_u, u, atol=50)
+    
+    #for index1,i in enumerate(u):
+    #    assert index1 == 2
+    #    for index2,j in enumerate(i):
+    #        assert index2 == 2
+    #        assert actual_u[index1][index2] == u[index1][index2]
 
     

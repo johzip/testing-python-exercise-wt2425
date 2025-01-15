@@ -7,6 +7,7 @@ Please follow the instructions in [python_testing_exercise.md](https://github.co
 
 ### pytest log
 #### test_initialize_domain
+```powershell
 ==================================== test session starts =====================================
 platform win32 -- Python 3.12.8, pytest-8.3.4, pluggy-1.5.0
 rootdir: C:\Users\johzi\OneDrive\Desktop\Master\Simulation\Exercise\Ex6\testing-python-exercise-wt2425
@@ -46,8 +47,9 @@ tests\unit\test_diffusion2d_functions.py:30: AssertionError
 ================================== short test summary info =================================== 
 FAILED tests/unit/test_diffusion2d_functions.py::test_initialize_domain - assert 150 == 300    
 ================================ 1 failed, 4 passed in 0.54s =================================
-
+```
 #### test_initialize_physical_parameters
+```powershell
 =============================================== test session starts ================================================
 platform win32 -- Python 3.12.8, pytest-8.3.4, pluggy-1.5.0
 rootdir: C:\Users\johzi\OneDrive\Desktop\Master\Simulation\Exercise\Ex6\testing-python-exercise-wt2425
@@ -94,7 +96,57 @@ dt = 0.004571428571428573
 ============================================= short test summary info ============================================== 
 FAILED tests/unit/test_diffusion2d_functions.py::test_initialize_physical_parameters - assert 0.004571428571428573 ± 1.0e-04 == 0.00113
 =========================================== 1 failed, 4 passed in 0.50s ============================================
+```
+#### test_set_initial_condition
+```powershell
+==================================================================================================== test session starts ====================================================================================================
+platform win32 -- Python 3.12.8, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\Users\johzi\OneDrive\Desktop\Master\Simulation\Exercise\Ex6\testing-python-exercise-wt2425
+collected 5 items                                                                                                                                                                                                            
 
+tests\integration\test_diffusion2d.py ..                                                                                                                                                                               [ 40%] 
+tests\unit\test_diffusion2d_functions.py ..F                                                                                                                                                                           [100%]
+
+========================================================================================================= FAILURES ========================================================================================================== 
+________________________________________________________________________________________________ test_set_initial_condition _________________________________________________________________________________________________ 
+
+    def test_set_initial_condition():
+        """
+        Checks function SolveDiffusion2D.get_initial_function
+        """
+        # Fixture
+
+        # Expected result
+        u= np.array([[300., 300., 300., 300.],
+                     [300., 300., 300., 300.],
+                     [300., 300., 300., 300.],
+                     [300., 300., 300., 300.],
+                     [300., 300., 300., 300.]])
+
+
+        # Actual result
+        solver = SolveDiffusion2D()
+        solver.nx=5
+        solver.ny=4
+        solver.dx=0.5
+        solver.dy=0.5
+        solver.T_cold=300.
+        solver.T_hot=900.
+        actual_u = solver.set_initial_condition()
+
+
+        # Test
+        assert actual_u.shape == u.shape
+>       assert np.allclose(actual_u, u, atol=50)
+E       assert False
+E        +  where False = <function allclose at 0x00000254BF0838B0>(array([[900., 900., 900., 900.],\n       [900., 900., 900., 900.],\n       [900., 900., 900., 900.],\n       [900., 900., 900., 900.],\n       [900., 900., 900., 900.]]), array([[300., 300., 300., 300.],\n       [300., 300., 300., 300.],\n       [300., 300., 300., 300.],\n       [300., 300., 300., 300.],\n       [300., 300., 300., 300.]]), atol=50)
+E        +    where <function allclose at 0x00000254BF0838B0> = np.allclose
+
+tests\unit\test_diffusion2d_functions.py:87: AssertionError
+================================================================================================== short test summary info ================================================================================================== 
+FAILED tests/unit/test_diffusion2d_functions.py::test_set_initial_condition - assert False
+================================================================================================ 1 failed, 4 passed in 0.67s ================================================================================================
+```
 ### unittest log
 
 ## Citing
