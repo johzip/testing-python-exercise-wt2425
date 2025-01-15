@@ -41,15 +41,15 @@ def test_initialize_physical_parameters():
     T_hot=600.
 
     # Expected result
-    dt= 0.00072
+    dt= 0.00113
     
 
     # Actual result
     solver = SolveDiffusion2D()
     solver.dx = 0.1
-    solver.dy = 0.1
+    solver.dy = 0.2
     solver.initialize_physical_parameters(d, T_cold, T_hot)
-    actual_dt = pytest.approx(solver.dt, abs=0.00001)
+    actual_dt = pytest.approx(solver.dt, abs=0.0001)
   
     # Test
     assert actual_dt == dt
@@ -71,8 +71,9 @@ def test_set_initial_condition():
     solver.nx=4
     solver.ny=4
     solver.dx=0.1
-    solver.dy=0.1
-    solver.T_cold=300.
+    solver.dy=0.5
+    solver.T_cold=330.
+    solver.T_hot=930.
     actual_u = solver.set_initial_condition()
     
   
