@@ -309,6 +309,15 @@ FAILED test_diffusion2d.py::test_set_initial_condition - assert False
 ================================================================================================ 1 failed, 1 passed in 0.50s ================================================================================================
 ```
 
+## tox
+```cmd
+python -m tox
+testing: recreate env because requirements removed: pytest>=8
+testing: remove tox env folder C:\Users\johzi\OneDrive\Desktop\Master\Simulation\Exercise\Ex6\testing-python-exercise-wt2425\.tox\testing
+  testing: OK (1.25 seconds)
+  congratulations :) (1.36 seconds)
+```
+
 ## Citing
 
 The code used in this exercise is based on [Chapter 7 of the book "Learning Scientific Programming with Python"](https://scipython.com/book/chapter-7-matplotlib/examples/the-two-dimensional-diffusion-equation/).
