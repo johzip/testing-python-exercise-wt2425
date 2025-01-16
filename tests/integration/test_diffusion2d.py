@@ -45,19 +45,19 @@ def test_set_initial_condition():
     """
     solver = SolveDiffusion2D()
     # Fixture
-    w=1. 
-    h=2.
-    dx=0.2
-    dy=0.5
+    w=15. 
+    h=12.
+    dx=3.
+    dy=3.
 
-    d=3.5
+    d=0.001
     T_cold=300.
-    T_hot=600.
+    T_hot=900.
 
     # Expected result
     u= np.array([[300., 300., 300., 300.],
                  [300., 300., 300., 300.],
-                 [300., 300., 300., 300.],
+                 [300., 300., 900., 300.],
                  [300., 300., 300., 300.],
                  [300., 300., 300., 300.]])
 
@@ -69,4 +69,4 @@ def test_set_initial_condition():
     # Test
     assert actual_u.shape == u.shape
     
-    assert np.allclose(actual_u, u, 20)
+    assert np.allclose(actual_u, u, 0.0001)
